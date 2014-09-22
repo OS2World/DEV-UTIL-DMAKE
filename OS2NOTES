@@ -1,0 +1,133 @@
+Notes on the port of dmake to OS/2
+==================================
+
+	Jon Saxton
+	March 2004
+
+Dmake is a make utility on steroids.  It is extremely powerful and highly
+configurable.  It has been ported to many operating systems.  It is capable
+of using multiple computers on a network to build complex projects.
+
+I am a long-time user of dmake but I am not an expert.  I have not used
+anything approaching all of its features.  When I need to do something a
+bit beyond the mundane, I consult the (somewhat outdated but still accurate)
+manual.
+
+My main reason for using dmake rather than some other comparable tool is
+historical. I had tried dmake some years ago and so I was somewhat familiar
+with it.  Then about four years ago I started writing C and C++ programs for
+UNIX.  As far as possible I do all the development and testing on OS/2.  Once
+I am satisfied that the program is working, I squirt the source code over the
+wire to a UNIX system for compiling and linking.  I maintain exactly one set
+of source files for each project and I do not want to maintain two distinct
+makefiles.  By writing my makefiles for processing by dmake, it is possible
+for me to have one makefile which works unchanged on OS/2 and UNIX.
+
+There are probably other tools which would work just as well (gnu make
+is one that springs to mind), but I have not investigated those.
+
+Quite recently I needed to have one of my OS/2-UNIX programs execute on
+Windows 2000.  I found a compiled version of dmake on the internet and it
+worked perfectly for that project but it turned out to be a slightly more
+recent version than the one I had been using on OS/2 and UNIX so I decided
+to update my version.
+
+For some time now the official dmake web site (http://dmake.wticorp.com)
+seems to have been inaccessible.  Meanwhile dmake is used by the Open Office
+team as its build tool and the dmake source code is part of the Open Office
+distribution.  That is what I used for this exercise.
+
+I fixed a few minor spelling errors:
+
+	openning -> opening
+	infering -> inferring
+
+and changed all the grave accents used as quote marks to apostrophes
+
+	` -> '
+
+for no reason other than that to me the pairing of the grave accent with
+the apostrophe is `really' ugly on every display that I have used.
+
+I constructed the OS/2-gcc version of config.h by hand and modified the
+OS/2 version of switchar.c to return '-' as the switch character instead
+of '/'.  This has the side-effect of causing the directory separator to
+be reported as '/' instead of '\'.  There are very few circumstances in
+which this matters and using '/' on all platforms has the benefit of
+consistency.  However it is not necessary for portable makefiles because
+the configuration files supplied with dmake define the macro $/ to be
+the directory separator character.  Using $/ in place of / would insert
+the correct separator in any environment so I could have left switchar.c
+alone.
+
+There were other places where \ needed to be changed to / but as I write
+I can only remember one, namely slash.h.
+
+The changes I made to the primary dmake sources were pretty trivial but
+I did make build a new "gcc" directory underneath "os2".  That directory
+contains a tempnam.c file like the pre-existing ones in the "icc" heirarchy
+but it is not used.  The gcc/emx build uses the one in os2.
+
+As I said above, the manual (man/dmake.nc) is somewhat outdated.  The
+current version of dmake supports a small range of logical and arithmetic
+operators.  For example, one can say
+
+	.IF $(COLOUR) == yellow
+	.IF $(COLOUR) != yellow
+	.IF $(ANSWER) >= 42
+	.IF $(COLOUR) == yellow || $(ANSWER) == 42
+
+The comparison operators are:
+
+	==	equal
+	!=	not equal
+	>	greater
+	<	less
+	>=	greater or equal
+	<=	less or equal
+
+and the logical operators are:
+
+	&&	and
+	||	or
+
+I haven't yet figured out the precedence of the logical operators yet but
+they are both of lower precedence than the comparison operators.
+
+When dmake starts up, it needs to find its configuration file.  For OS/2
+the program looks for "startup.mk" in a directory described by the environ-
+ment variable DMAKEROOT.  Thus if you have in config.sys or the startup
+script for your text session
+
+	set dmakeroot=d:/u/etc/dmake
+
+then dmake will look for d:/u/etc/dmake/startup.mk.  This is established
+by a line in startup.h which gets included in ruletab.c.
+
+The configuration file can be specified more directly by setting another
+environment variable, namely "makestartup".  For example,
+
+	set makestartup=d:/u/etc/dmake/startup.mk
+
+will have exactly the same effect as the dmakeroot setting shown earlier.
+
+I have included a sample set of run-time configuration files.  These start
+with "startup.mk" which ultimately includes all the others that are
+appropriate for the extant build environment.  I have added extensive notes
+to startup.mk and less extensive notes to the others.
+
+============ Windows 2000 =============
+
+While I was at it, I built a new version of dmake for Windows (NT/2000).
+I tried running the configure script under mingw but it failed and since
+I was in no mood to debug the script so I just made a selective copy of
+the files in the os2 subdirectory into the winnt subdirectory and tweaked
+them ever so slightly to make the initial compile work.  From a gcc text
+session type
+
+	make.cmd winnt-gcc
+
+to build the Windows version.  I opened an msys window then ran cmd.exe
+on top to get the correct environment.
+
+All the notes for OS/2 apply equally to Windows.

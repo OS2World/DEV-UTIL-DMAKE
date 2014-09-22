@@ -1,0 +1,32 @@
+if not exist objects md objects
+gcc -c -I. -Ios2 -Ios2/gcc -Ios2/gcc/emx -g -o objects/infer.o infer.c
+gcc -c -I. -Ios2 -Ios2/gcc -Ios2/gcc/emx -g -o objects/make.o make.c
+gcc -c -I. -Ios2 -Ios2/gcc -Ios2/gcc/emx -g -o objects/stat.o stat.c
+gcc -c -I. -Ios2 -Ios2/gcc -Ios2/gcc/emx -g -o objects/expand.o expand.c
+gcc -c -I. -Ios2 -Ios2/gcc -Ios2/gcc/emx -g -o objects/dmstring.o dmstring.c
+gcc -c -I. -Ios2 -Ios2/gcc -Ios2/gcc/emx -g -o objects/hash.o hash.c
+gcc -c -I. -Ios2 -Ios2/gcc -Ios2/gcc/emx -g -o objects/dag.o dag.c
+gcc -c -I. -Ios2 -Ios2/gcc -Ios2/gcc/emx -g -o objects/dmake.o dmake.c
+gcc -c -I. -Ios2 -Ios2/gcc -Ios2/gcc/emx -g -o objects/path.o path.c
+gcc -c -I. -Ios2 -Ios2/gcc -Ios2/gcc/emx -g -o objects/imacs.o imacs.c
+gcc -c -I. -Ios2 -Ios2/gcc -Ios2/gcc/emx -g -o objects/sysintf.o sysintf.c
+gcc -c -I. -Ios2 -Ios2/gcc -Ios2/gcc/emx -g -o objects/parse.o parse.c
+gcc -c -I. -Ios2 -Ios2/gcc -Ios2/gcc/emx -g -o objects/getinp.o getinp.c
+gcc -c -I. -Ios2 -Ios2/gcc -Ios2/gcc/emx -g -o objects/quit.o quit.c
+gcc -c -I. -Ios2 -Ios2/gcc -Ios2/gcc/emx -g -o objects/state.o state.c
+gcc -c -I. -Ios2 -Ios2/gcc -Ios2/gcc/emx -g -o objects/dmdump.o dmdump.c
+gcc -c -I. -Ios2 -Ios2/gcc -Ios2/gcc/emx -g -o objects/macparse.o macparse.c
+gcc -c -I. -Ios2 -Ios2/gcc -Ios2/gcc/emx -g -o objects/rulparse.o rulparse.c
+gcc -c -I. -Ios2 -Ios2/gcc -Ios2/gcc/emx -g -o objects/percent.o percent.c
+gcc -c -I. -Ios2 -Ios2/gcc -Ios2/gcc/emx -g -o objects/function.o function.c
+gcc -c -I. -Ios2 -Ios2/gcc -Ios2/gcc/emx -g -o objects/ruletab.o os2/ruletab.c
+gcc -c -I. -Ios2 -Ios2/gcc -Ios2/gcc/emx -g -o objects/dchdir.o os2/dchdir.c
+gcc -c -I. -Ios2 -Ios2/gcc -Ios2/gcc/emx -g -o objects/switchar.o os2/switchar.c
+gcc -c -I. -Ios2 -Ios2/gcc -Ios2/gcc/emx -g -o objects/runargv.o msdos/runargv.c
+gcc -c -I. -Ios2 -Ios2/gcc -Ios2/gcc/emx -g -o objects/dirbrk.o msdos/dirbrk.c
+gcc -c -I. -Ios2 -Ios2/gcc -Ios2/gcc/emx -g -o objects/arlib.o msdos/arlib.c
+gcc -c -I. -Ios2 -Ios2/gcc -Ios2/gcc/emx -g -o objects/dstrlwr.o msdos/dstrlwr.c
+gcc -c -I. -Ios2 -Ios2/gcc -Ios2/gcc/emx -g -o objects/rmprq.o unix/rmprq.c
+gcc -c -I. -Ios2 -Ios2/gcc -Ios2/gcc/emx -g -o objects/dcache.o unix/dcache.c
+gcc -c -I. -Ios2 -Ios2/gcc -Ios2/gcc/emx -g -o objects/tempnam.o os2/tempnam.c
+gcc -g -o dmake.exe objects/dmake.o objects/infer.o objects/make.o objects/stat.o objects/expand.o objects/dmstring.o objects/hash.o objects/dag.o objects/path.o objects/imacs.o objects/sysintf.o objects/parse.o objects/getinp.o objects/quit.o objects/state.o objects/dmdump.o objects/macparse.o objects/rulparse.o objects/percent.o objects/function.o objects/ruletab.o objects/dchdir.o objects/switchar.o objects/runargv.o objects/dirbrk.o objects/arlib.o objects/dstrlwr.o objects/rmprq.o objects/tempnam.o

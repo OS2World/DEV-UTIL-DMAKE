@@ -1,0 +1,24 @@
+D/386ix////
+D/bsd43////
+D/bsdarm32////
+D/coherent////
+D/cygwin////
+D/linux////
+D/macosx////
+D/solaris////
+D/sysvr1////
+D/sysvr3////
+D/sysvr4////
+D/xenix////
+/Makefile.am/1.4.40.1/Wed Mar  3 14:17:57 2004//TOpenOffice_1_1_1
+/Makefile.in/1.7.20.1/Wed Mar  3 14:17:57 2004//TOpenOffice_1_1_1
+/arlib.c/1.3/Tue Mar 25 14:02:41 2003//TOpenOffice_1_1_1
+/config.mk/1.1.1.1/Fri Sep 22 15:33:33 2000//TOpenOffice_1_1_1
+/dcache.c/1.3/Tue Mar 25 14:02:41 2003//TOpenOffice_1_1_1
+/dirbrk.c/1.1.1.1/Fri Sep 22 15:33:33 2000//TOpenOffice_1_1_1
+/rmprq.c/1.3/Tue Mar 25 14:02:41 2003//TOpenOffice_1_1_1
+/ruletab.c/1.3/Tue Mar 25 14:02:42 2003//TOpenOffice_1_1_1
+/runargv.c/1.7/Tue Mar 25 14:02:42 2003//TOpenOffice_1_1_1
+/startup.h/1.1.1.1/Fri Sep 22 15:33:33 2000//TOpenOffice_1_1_1
+/sysintf.h/1.1.1.1/Fri Sep 22 15:33:33 2000//TOpenOffice_1_1_1
+/tempnam.c/1.2/Thu Jul 11 08:53:35 2002//TOpenOffice_1_1_1
